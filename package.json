@@ -22,5 +22,5 @@
   "license": "BSD",
   "peerDependencies": {
     "component": ">= 0.14"
-  },
+  }
 }
