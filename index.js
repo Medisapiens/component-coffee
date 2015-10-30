@@ -6,7 +6,6 @@ var mkdirp = require("mkdirp");
 var glob = require("glob");
 var getDirName = require("path").dirname;
 var debug = require('debug')('http');
-var btoa = require('btoa');
 
 var devFlag = false;
 var cacheDirPath = process.cwd() + '/.cache';
@@ -28,7 +27,7 @@ function clearCache(path) {
     Remove the cache from the changed file
     */
     var fileMatch = cacheDirPath + path + '*';
-    try{
+    try {
         debug('Removing files:', fileMatch);
         glob(fileMatch, [], function(er, files) {
             for (var i = 0; i < files.length; i++) {
@@ -36,7 +35,7 @@ function clearCache(path) {
                 debug('unlinking:', files[i]);
             }
         });
-    } catch(err){
+    } catch (err) {
         console.error('Something wen\'t sour. Please delete .cache-folder.', err);
     }
 }
@@ -85,11 +84,10 @@ module.exports = function(builder) {
                 compiled = fs.readFileSync(buildFile, 'utf8');
             } catch (err) {
                 //Else compile new content, create compiled cache-file and hash-file.
-                console.log('Compiling: ', options.filename);    
+                console.log('Compiling: ', options.filename);
                 compiled = coffeescript.compile(str, options);
-                if(compiled.v3SourceMap){
-                    //Support for sourcemaps, whenever the doublicate content ticket is resolved
-                    compiled =  compiled.js; // + "\n//# sourceMappingURL=data:application/json;base64," + (btoa(unescape(encodeURIComponent(compiled.v3SourceMap)))) + "\n//# sourceURL=coffeescript";
+                if (compiled.v3SourceMap) {
+                    compiled = compiled.js;
                 }
 
                 //Try to remove the cached files, if the hash does not comply
