@@ -7,12 +7,20 @@
     "test": ""
   },
   "dependencies": {
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "sse4_crc32": "4.1.0",
+    "mkdirp": "0.5.1",
+    "glob": "5.0.15",
+    "path": "0.12.7",
+    "debug": "2.2.0",
+    "btoa": "^1.1.2"
   },
   "repository": "",
-  "author": "Anthony Short",
+  "author": {
+    "name": "Anthony Short"
+  },
   "license": "BSD",
   "peerDependencies": {
     "component": ">= 0.14"
-  }
+  },
 }
