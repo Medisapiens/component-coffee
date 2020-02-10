@@ -2,10 +2,8 @@ var coffeescript = require('coffee-script');
 var path = require('path');
 var fs = require('fs');
 var calculate = require('sse4_crc32').calculate;
-var mkdirp = require("mkdirp");
-var glob = require("glob");
-var getDirName = require("path").dirname;
-var debug = require('debug')('http');
+var mkdirp = require('mkdirp');
+var getDirName = path.dirname;
 
 var devFlag = false;
 var cacheDirPath = process.cwd() + '/.cache';
